@@ -29,7 +29,10 @@ int main(int argc, char* argv[]) {
     // 2. 准备好服务器的 sockaddr_in 结构
     sockaddr_in server_addr;
     server_addr.sin_family = AF_INET;
+    // ip 地址是一个整数， 需要转成网络字节序
+    // inet_addr 函数自动帮助转换 点分十进制转换成 整形
     server_addr.sin_addr.s_addr = inet_addr(argv[1]);
+    // 端口号必须从 主机字节序 转换成网络字节序
     server_addr.sin_port = htons(9090);
 
     // 3. 客户端直接发送数据即可
