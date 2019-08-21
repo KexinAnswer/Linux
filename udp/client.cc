@@ -9,6 +9,8 @@
 // ./client 127.0.0.1 
 int main(int argc, char* argv[]) {
     // 1. 先创建一个 socket
+    // AF_INET 是一个宏， 表示 ipv4 协议
+    // SOCK_DGRAM 表示使用 UDP 协议
     int sock = socket(AF_INET, SOCK_DGRAM, 0);
     if (sock < 0) {
        perror("socket");
